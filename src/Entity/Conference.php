@@ -133,7 +133,14 @@ class Conference
         return $this->slug;
     }
     
-    public function computeSlug(SluggerInterface $slugger)
+    public function setSlug(?string $slug): self
+	{
+		$this->slug = $slug;
+		
+		return $this;
+	}
+	
+    public function computeSlug(SluggerInterface $slugger): void
 	{
 		if (!$this->slug || '-' === $this->slug) {
 			$this->slug = (string) $slugger->slug((string) $this)->lower();
