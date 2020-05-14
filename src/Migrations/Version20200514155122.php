@@ -10,20 +10,21 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200306124026 extends AbstractMigration
+final class Version20200514155122 extends AbstractMigration
 {
     public function getDescription() : string
     {
-        return 'Add slug on conference';
+        return 'Add state on comments';
     }
 
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
-		$this->addSql('ALTER TABLE conference ADD slug VARCHAR(255)');
-		$this->addSql("UPDATE conference SET slug=CONCAT(LOWER(city), '-', year)");
-        $this->addSql('ALTER TABLE conference ALTER COLUMN slug SET NOT NULL');
+
+        $this->addSql('ALTER TABLE comment ADD state VARCHAR(255)');
+        $this->addSql("UPDATE comment SET state='published'");
+        $this->addSql('ALTER TABLE comment ALTER COLUMN state SET NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,6 +33,6 @@ final class Version20200306124026 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('ALTER TABLE conference DROP slug');
+        $this->addSql('ALTER TABLE comment DROP state');
     }
 }

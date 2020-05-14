@@ -14,7 +14,7 @@ final class Version20200306125557 extends AbstractMigration
 {
     public function getDescription() : string
     {
-        return '';
+        return 'Make conference slug unique';
     }
 
     public function up(Schema $schema) : void

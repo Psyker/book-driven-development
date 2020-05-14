@@ -52,6 +52,11 @@ class Comment
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photoFilename;
+
+    /**
+     * @ORM\Column(type="string", length=255, options={"default": "submitted"})
+     */
+    private $state = 'submitted';
     
     public function __toString()
 	{
@@ -59,9 +64,9 @@ class Comment
 	}
 	
 	public function getId(): ?int
-    {
-        return $this->id;
-    }
+             {
+                 return $this->id;
+             }
 
     public function getAuthor(): ?string
     {
@@ -142,4 +147,16 @@ class Comment
 	{
 		$this->createdAt = new \DateTime();
 	}
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
 }
