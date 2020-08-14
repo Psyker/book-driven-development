@@ -19,5 +19,5 @@ services:
     ports: [5672, 15672]
 
   mailcatcher:
-    image: shickling/mailcatcher
+    image: tophfr/mailcatcher
     ports: [1025, 1080]
