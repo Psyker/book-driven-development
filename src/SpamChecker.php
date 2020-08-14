@@ -32,7 +32,7 @@ class SpamChecker
                 'comment_date_gmt' => $comment->getCreatedAt()->format('c'),
                 'blog_lang' => 'en',
                 'blog_charset' => 'UTF-8',
-                'is_test' => true
+                'is_test' => false
             ])
         ]);
 
