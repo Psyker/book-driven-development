@@ -41,7 +41,7 @@ hooks:
         set -x -e
 
         (>&2 symfony-deploy)
-    
+
 crons:
     comment_cleanup:
         # Cleanup every night at 11.50 pm (UTC).

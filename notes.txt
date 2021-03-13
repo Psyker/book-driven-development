@@ -1,0 +1,5 @@
+Start consuming messages :
+symfony run -d --watch=config,src,templates,vendor symfony console messenger:consume async
+
+Building assets:
+symfony run -d yarn encore dev --watch
